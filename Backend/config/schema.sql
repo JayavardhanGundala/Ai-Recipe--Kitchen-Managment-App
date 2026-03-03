@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS users(
     name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 --user preferences
 
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT  EXISTS user_preferences(
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(user_id)
 
-)
+);
 
 --pantry table
  CREATE TABLE IF NOT EXISTS pantry_items(
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT  EXISTS user_preferences(
     is_running_low BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
- )
+ );
 
 
  --recipe table
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT  EXISTS user_preferences(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
- )
+ );
 
  --recipe ingrident table
  CREATE TABLE IF NOT EXISTS recipe_ingredient(
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT  EXISTS user_preferences(
     quantity DECIMAL (10,2) NOT NULL,
     unit VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
- )
+ );
 
  --RECIPE NUTRION TABLE
  CREATE TABLE IF NOT EXISTS recipe_nutrition(
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT  EXISTS user_preferences(
     fiber DECIMAL(10,2),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(recipe_id)
- )
+ );
 
  --Meal plans table
  CREATE TABLE IF NOT EXISTS meal_plans(
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT  EXISTS user_preferences(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE(user_id,meal_date,meal_type)
- )
+ );
 
  --shopping list
  CREATE TABLE IF NOT EXISTS shopping_list_items(
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT  EXISTS user_preferences(
    from_meal_plan BOOLEAN DEFAULT FALSE,
    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
- )
+ );
 
 
  CREATE INDEX IF NOT EXISTS idx_pantry_user_id ON pantry_items(user_id);
@@ -130,7 +130,7 @@ BEGIN
      NEW.updated_at=CURRENT_TIMESTAMP;
      RETURN NEW;
 END;
-$$ language 'plpgsql'
+$$ LANGUAGE plpgsql;
 
 
 
